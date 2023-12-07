@@ -1,0 +1,39 @@
+{
+  "users": [],
+  "cartitems": [
+    {
+      "id": "1",
+      "username": "user1@example.com",
+      "product": "Product A",
+      "quantity": 1
+    },
+    {
+      "id": "2",
+      "username": "user2@example.com",
+      "product": "Product B",
+      "quantity": 2
+    },
+    {
+      "id": "f780ddeb-a837-4720-b197-61a73b6eae9c",
+      "img1": "https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:500)/product/410372755002/665/410372755002_1_6943.webp",
+      "img2": "https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:500)/product/410372755002/665/410372755002_2_5509.webp",
+      "img3": "https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:500)/product/410372755002/665/410372755002_3_5199.webp",
+      "product": "DIESEL DOUBLE UP BLACK WATCH DZ1982",
+      "mrp": "MRP ₹9,495.00",
+      "color": "Gold",
+      "quantity": 1,
+      "username": "mm"
+    },
+    {
+      "id": "6a5b9ab8-5147-42ed-a2f8-b8653fc99ac0",
+      "img1": "https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:500)/product/410372492006/665/410372492006_1_1246.webp",
+      "img2": "https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:500)/product/410372492006/665/410372492006_2_8209.webp",
+      "img3": "https://cdn.pixelbin.io/v2/black-bread-289bfa/qlNgW4/t.resize(w:500)/product/410372492006/665/410372492006_4_7715.webp",
+      "product": "1969 D-EBBEY MEDIUM TREATED BLUE WOMAN BOOTCUT AND FLARE JEANS",
+      "mrp": "MRP ₹27,999.00",
+      "color": " Blue",
+      "quantity": 1,
+      "username": "hhj"
+    }
+  ]
+}

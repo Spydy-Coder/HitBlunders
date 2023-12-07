@@ -4,16 +4,20 @@ import jsonData from "../../data.json";
 import "./Cart.css";
 import Address from "../Address/Address";
 
+
 function Cart() {
   const [cartData, setCartData] = useState([]);
   const { email } = useParams();
   const [trueaddress, setTrue] = useState(false);
   const [totalCost,setTotalCost] = useState(0);
+  
   const change = () => {
     setTrue(!trueaddress);
   };
 
   function calculateTotalPrice(mrpArray) {
+    // const product = jsonData.product.find((item) => item.id === id);
+    // console.log(product)
     const totalCost = mrpArray.reduce((accumulator, currentValue) => {
       // Extract the numeric part from the "MRP ₹..." string
       const mrpValue = parseFloat(currentValue.mrp.split("₹")[1].replace(/,/g, ""));

@@ -10,7 +10,6 @@ const addtocart = (id, email) => {
   const product = jsonData.product.find((item) => item.id === id);
   if (product) {
     const cartItem = { ...product, quantity: 1, username: email,id: uuidv4(), };
-    console.log("want",cartItem)
     fetch("http://localhost:8000/cart", {
       method: "POST",
       headers: {
@@ -20,7 +19,6 @@ const addtocart = (id, email) => {
     })
       .then((res) => res.json())
       .then((cartItem) => {
-       console.log(cartItem)
 
       });
   }
