@@ -72,7 +72,7 @@ function Login() {
     // Clear the input fields after registration
     setEmail("");
     setPassword("");
-    navigate(`/cart/${email}`);
+    navigate(`/cart/${id}/${email}`);
   };
 
   return (

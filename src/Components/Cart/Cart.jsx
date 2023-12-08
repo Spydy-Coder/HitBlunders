@@ -6,6 +6,7 @@ import Address from "../Address/Address";
 
 
 function Cart() {
+  const {id}= useParams();
   const [cartData, setCartData] = useState([]);
   const { email } = useParams();
   const [trueaddress, setTrue] = useState(false);
@@ -18,15 +19,16 @@ function Cart() {
   function calculateTotalPrice(mrpArray) {
     // const product = jsonData.product.find((item) => item.id === id);
     // console.log(product)
-    const totalCost = mrpArray.reduce((accumulator, currentValue) => {
-      // Extract the numeric part from the "MRP ₹..." string
-      const mrpValue = parseFloat(currentValue.mrp.split("₹")[1].replace(/,/g, ""));
+    // const totalCost = mrpArray.reduce((accumulator, currentValue) => {
+    //   // Extract the numeric part from the "MRP ₹..." string
+    //   const mrpValue = parseFloat(currentValue.mrp.split("₹")[1].replace(/,/g, ""));
 
-      // Add the numeric value to the accumulator
-      return accumulator + mrpValue;
-    }, 0);
+    //   // Add the numeric value to the accumulator
+    //   return accumulator + mrpValue;
+    // }, 0);
+    const totalCost=mrpArray.mrp;
     // setTotalCost(totalCost.toFixed(2));
-    return totalCost.toFixed(2); // Return the total cost rounded to 2 decimal places
+    return totalCost; // Return the total cost rounded to 2 decimal places
   }
 
   useEffect(() => {
@@ -34,17 +36,19 @@ function Cart() {
   }, []);
 
   const fetchCartData = () => {
-    const username = email?email:"wait";
-    if (username) {
-      console.log(username);
-      fetch(`http://localhost:8000/cart?username=${username}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("found", data);
-          setCartData(data);
-        })
-        .catch((error) => console.error("Error fetching cart data:", error));
-    }
+    const product = jsonData.product.find((item) => item.id === id);
+    setCartData(product)
+    // const username = email?email:"wait";
+    // if (username) {
+    //   console.log(username);
+    //   fetch(`http://localhost:8000/cart?username=${username}`)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       console.log("found", data);
+    //       setCartData(data);
+    //     })
+    //     .catch((error) => console.error("Error fetching cart data:", error));
+    // }
   };
 
   useEffect(()=>{
@@ -56,24 +60,18 @@ function Cart() {
   return (
     <div className="cart-container">
       <h2>My Cart</h2>
-      {cartData.length > 0 ? (
-        cartData.map((item) => (
-          <div className="cart-item" key={item.id}>
-            <img src={item.img1} alt={item.product} className="product-image" />
-            <div className="product-details">
-              <h3>{item.product}</h3>
-              <p>Price: {item.mrp}</p>
-              {/* Add more product details here */}
-            </div>
-          </div>
-        ))
-      ) : (
-        <p>No items in the cart.</p>
-      )}
+      
       <div className="total-price">
         <p>Total Price: ₹{calculateTotalPrice(cartData)}</p>
       </div>
-
+      <div className="cart-item" key={cartData.id}>
+            <img src={cartData.img1} alt={cartData.product} className="product-image" />
+            <div className="product-details">
+              <h3>{cartData.product}</h3>
+              <p>Price: {cartData.mrp}</p>
+              {/* Add more product details here */}
+            </div>
+          </div>
       <button className="add-address" onClick={change}>
         Add Address
       </button>

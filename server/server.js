@@ -10,6 +10,7 @@ app.use(express.json());
 
 const dataFilePath = 'data.json';
 const dataFilePathCart = 'cartitems.json'
+const detailFilePathOrders = 'detail.json';
 
 // Create an empty array if the data file doesn't exist
 if (!fs.existsSync(dataFilePath)) {
@@ -21,10 +22,17 @@ const loadData = () => {
   const data = fs.readFileSync(dataFilePath, 'utf-8');
   return JSON.parse(data);
 };
+const loadDataOrders = () => {
+  const data = fs.readFileSync(detailFilePathOrders, 'utf-8');
+  return JSON.parse(data);
+};
 
 // Save data to the data file
 const saveData = (data) => {
   fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf-8');
+};
+const saveDataOrders = (data) => {
+  fs.writeFileSync(detailFilePathOrders, JSON.stringify(data, null, 2), 'utf-8');
 };
 
 app.post('/users', (req, res) => {
@@ -50,6 +58,15 @@ saveData({ users: [], cartitems });
   res.json(cartItem);
 });
 
+
+// Endpoint to handle the POST request for orders
+app.post('/orders', async (req, res) => {
+  const newOrder = req.body;
+  const orders = loadData();
+  orders.push(newOrder);
+//   saveData(users);
+saveDataOrders(users);
+});
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
