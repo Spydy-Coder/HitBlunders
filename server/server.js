@@ -28,12 +28,12 @@ const loadDataOrders = () => {
 };
 
 // Save data to the data file
-const saveData = (data) => {
-  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf-8');
-};
-const saveDataOrders = (data) => {
-  fs.writeFileSync(detailFilePathOrders, JSON.stringify(data, null, 2), 'utf-8');
-};
+// const saveData = (data) => {
+//   fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf-8');
+// };
+// const saveDataOrders = (data) => {
+//   fs.writeFileSync(detailFilePathOrders, JSON.stringify(data, null, 2), 'utf-8');
+// };
 
 app.post('/users', (req, res) => {
   const newUser = req.body;
@@ -61,11 +61,13 @@ saveData({ users: [], cartitems });
 
 // Endpoint to handle the POST request for orders
 app.post('/orders', async (req, res) => {
+  console.log("hhdhdjd")
   const newOrder = req.body;
-  const orders = loadData();
-  orders.push(newOrder);
+
+  // const orders = loadData();
+  // orders.push(newOrder);
 //   saveData(users);
-saveDataOrders(users);
+// saveDataOrders(newOrder);
 });
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
